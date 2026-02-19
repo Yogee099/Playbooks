@@ -1,0 +1,45 @@
+---
+- name: Play A
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    devices:
+     - R1
+     - R2
+     - R3
+
+  tasks:
+   - name: "10 MYTASK"
+     debug:
+       msg: Hello world for ansible
+  
+   - name: "20 LOOP TASK"  
+     debug:
+      var: item
+     loop: "{{ devices }}"
+    
+   - name: "30 LOOP TASK WITHITEMS"  
+     debug:
+      var: item
+     with_items: "{{ devices }}"   
+
+   - name: "40 LOOP TASK WITH DRTLIST"  
+     debug:
+      var: item
+     with_items:
+         - SW1
+         - SW2
+         - SW3 
+   - name: "50 LOOP TASK WITH LOOPLIST"  
+     debug:
+      var: item
+     loop:
+         - FW1
+         - FW2
+         - FW3 
+   - name: "60 LOOP TASK WITH ONELIST"  
+     debug:
+      var: item
+     loop: ["AP1","AP2","AP3"]
+                    

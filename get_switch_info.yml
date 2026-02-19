@@ -1,0 +1,21 @@
+- name: play A
+  hosts: Cisco,Juniper
+  gather_facts: false
+
+  tasks:
+   - name: "10 printAnsiblehosts"
+     debug:
+      msg: "{{ansible_host}}"
+   - name: "20 Inventory"
+     debug:
+      msg: "{{inventory_hostname}}"  
+   - name: "30 PRINTING INVENTORY VAR YOUR VAR"
+     debug:
+      msg: "{{ yourvar }}" 
+  #  - name: "40 PRINTING OURVAR"
+  #    debug:
+  #     msg: "{{ ourvar }}"     
+  
+  #  - name: "50 PRINTING ALLVARS"
+  #    debug:
+  #     msg: "{{ allvar }}"  

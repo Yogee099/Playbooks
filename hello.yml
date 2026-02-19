@@ -1,0 +1,38 @@
+- name: Play A
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+   - name: task1
+     debug:
+      msg: "hello ansible"
+
+   - name: task2
+     debug:
+      msg: "hello world in Ansible"
+
+- name: Play B
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+   - name: task 1
+     debug:
+      msg: "hi there i am usning ansible" 
+   - name: task 20
+     debug:
+      msg: "hurray"      
+
+- name: Play C
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+   - name: task 1
+     debug:
+      msg: "first ansible prog" 
+   - name: task 20
+     debug:
+      msg: "yeh"         
+
+
