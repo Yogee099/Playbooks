@@ -1,0 +1,22 @@
+- name: Switch interface info
+  hosts: Cisco
+  gather_facts: false
+  connection: network_cli
+
+
+  tasks:
+   - name: "10 printAnsiblehosts"
+     debug:
+      msg: "{{ ansible_user }}"
+   - name: "20 get device info"   
+     ios_facts:
+       gather_subset: all
+     register: output
+   
+   - name: SET for SW MGMT IP
+     set_fact:
+       sw_mgmt_ip: "{{ output['ansible_facts']['ansible_net_all_ipv4_addresses'][0]}}"
+       new_var: "{{ output.ansible_facts.ansible_net_image}}"
+   - name: DEBUG to Print output
+     debug:
+       var: new_var,sw_mgmt_ip 
