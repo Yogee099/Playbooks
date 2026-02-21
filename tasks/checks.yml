@@ -1,0 +1,7 @@
+    - name: "1010 Run show version on remote Switch "
+      cisco.ios.ios_command:
+        commands: 
+          # - show version
+          - show ip int br 
+          - sh int des
+      register: ver

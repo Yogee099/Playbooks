@@ -1,0 +1,27 @@
+- name: Switch interface info
+  hosts: Cisco
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "1010 PRE CHECKS "
+      import_tasks: tasks/checks.yml
+      register: ver
+    
+    - name: "1020 display PRE CHECKS"
+      debug:
+        var: ver["stdout_lines"]
+
+    - name: "1030 CONFIG DES ON SWITCH"  
+      cisco.ios.ios_config:
+        lines:
+          - no des
+        parents: interface Et0/0 
+
+    - name: " POST CHECKS "
+      import_tasks: tasks/checks.yml
+      register: ver
+    
+    - name: "1050 POST CHECKS"
+      debug:
+        var: ver["stdout_lines"]    
