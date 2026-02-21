@@ -1,0 +1,19 @@
+- name: Switch interface info
+  hosts: Cisco
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: "1010 Run show version on remote Switch "
+      cisco.ios.ios_command:
+        commands: 
+          - show version
+          - show ip int br 
+          - sh int des
+      register: ver
+    
+    - name: "1020 display sh version"
+      debug:
+        var: ver["stdout_lines"]
+             
+      
