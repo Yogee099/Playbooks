@@ -1,1 +1,7 @@
-yourvar: 1111
+vlans:
+  - id: 10
+    name: USERS
+  - id: 20
+    name: SERVERS
+  - id: 30
+    name: MANAGEMENT
